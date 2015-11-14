@@ -1,5 +1,6 @@
 # sms
 
-## search
+```sh
+$ node index.js
+```
 
-`search.sh` accepts a query and outputs texts which include it.
