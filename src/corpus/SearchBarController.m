@@ -39,7 +39,7 @@
     if (parts.count >= 3) {
         NSString *type = parts[0];
         NSString *query = [[parts subarrayWithRange:NSMakeRange(2, parts.count - 2)] componentsJoinedByString:@" "];
-        if (query.length > 1) {
+        if (query.length > 2) {
             [self search:query forType:type];
         } else {
             [self.window setShowingResults:NO];
