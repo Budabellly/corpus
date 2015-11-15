@@ -17,7 +17,7 @@
 @implementation SearchBarController
 
 - (void)search: (NSString *)query {
-    NSURL *URL = [NSURL URLWithString:@"http://localhost:3005/plugin/texts"];
+    NSURL *URL = [NSURL URLWithString:@"http://localhost:3005/plugin/groupme"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:URL];
     [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [client postPath:@"" parameters:@{@"content": query} success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -31,7 +31,7 @@
 
 - (void)controlTextDidChange:(NSNotification *)notification {
     NSString *search = [((NSTextField *)notification.object) stringValue];
-    if (search.length > 5) {
+    if (search.length > 2) {
         [self search:search];
     } else {
         [self.window setShowingResults:NO];
