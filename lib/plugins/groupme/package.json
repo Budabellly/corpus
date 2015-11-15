@@ -5,7 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "groupme": "^0.5.7",
-    "minimist": "^1.2.0",
     "ramda": "^0.18.0"
   }
 }

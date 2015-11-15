@@ -17,7 +17,7 @@
 @implementation SearchBarController
 
 - (void)search: (NSString *)query {
-    NSURL *URL = [NSURL URLWithString:@"http://localhost:3005/plugin/texts"];
+    NSURL *URL = [NSURL URLWithString:@"http://localhost:3005/plugin/groupme"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:URL];
     [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [client postPath:@"" parameters:@{@"content": query} success:^(AFHTTPRequestOperation *operation, id responseObject) {
