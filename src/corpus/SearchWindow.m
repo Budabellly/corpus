@@ -54,6 +54,10 @@
 	[super setContentSize:newFrameSize];
 }
 
+- (void)setRows: (NSArray *)rows {
+    [web stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var scope = angular.element(document.querySelector('div')).scope(); scope.setRows(%@); scope.$apply();", rows]];
+}
+
 - (void)setShowingResults: (BOOL)showing {
     CGSize windowSize = [NSScreen mainScreen].frame.size;
     CGSize size;

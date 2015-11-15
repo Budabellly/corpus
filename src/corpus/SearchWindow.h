@@ -10,5 +10,6 @@
     WebView *web;
 }
 - (void)setShowingResults: (BOOL)showing;
+- (void)setRows: (NSArray *)rows;
 
 @end

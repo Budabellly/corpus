@@ -17,11 +17,12 @@
 @implementation SearchBarController
 
 - (void)search: (NSString *)query {
-    NSURL *URL = [NSURL URLWithString:@"http://localhost:3005/plugin/groupme"];
+    NSURL *URL = [NSURL URLWithString:@"http://localhost:3005/plugin/texts"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:URL];
     [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [client postPath:@"" parameters:@{@"content": query} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *text = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        [self.window setRows:text];
         [self.window setShowingResults:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.window setShowingResults:NO];
