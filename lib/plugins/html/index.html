@@ -2,10 +2,14 @@
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js" type="text/javascript"></script>
-  </head>
-  <body>
-    <h1>Hello</h1>
     <script src="app.js"></script>
+  </head>
+  <body  ng-app="resultView" ng-controller="ResultController">
+    <div ng-repeat="info in results">
+      <h1> {{info.platform}} </h1>
+      <h3> {{info.author}}: {{info.content}} </h3>
+      <h6> {{info.date}} </h6>
+    </div>
   </body>
 </html>
 
