@@ -14,6 +14,7 @@
         [self makeKeyAndOrderFront:nil];
     }];
     startingSize = self.frame.size;
+    web.mainFrameURL = @"http://localhost:3005/";
     [self setShowingResults:NO];
 }
 
@@ -59,12 +60,15 @@
     if (!showing) {
         size = startingSize;
         [self setFrame:CGRectMake((windowSize.width - size.width) / 2, (windowSize.height - size.height) / 2, size.width, size.height) display:YES animate:NO];
+        web.hidden = YES;
     } else {
         size = CGSizeMake(startingSize.width, 300);
         [self setFrame:CGRectMake((windowSize.width - size.width) / 2, (windowSize.height - size.height) / 2, size.width, size.height) display:YES animate:NO];
+        web.hidden = NO;
     }
     CGSize searchSize = searchBar.frame.size;
     [searchBar setFrame:CGRectMake(10, size.height - searchSize.height - 10, size.width - 20, searchSize.height)];
+    [web setFrame:CGRectMake(10, 10, size.width - 20, 300 - searchSize.height - 30)];
 }
 
 - (void)setContentView:(NSView *)aView {
@@ -95,6 +99,8 @@
 	[childContentView setFrame:[self contentRectForFrameRect:bounds]];
 	[childContentView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
 	[frameView addSubview:childContentView];
+    web = [[WebView alloc] init];
+    [frameView addSubview:web];
     
     [self setup];
 }

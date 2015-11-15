@@ -12,6 +12,7 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		ADC0D2931BF846840046DDC7 /* SearchBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC0D2921BF846840046DDC7 /* SearchBarController.m */; };
+		ADC0D2951BF86AEC0046DDC7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC0D2941BF86AEC0046DDC7 /* WebKit.framework */; };
 		ADF8DAD41BF7FDCB00B8757E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF8DAD31BF7FDCB00B8757E /* Carbon.framework */; };
 		B64B4EF9AF60F995707854DA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC975D43CBB3B455EF214E42 /* libPods.a */; };
 		C9605A210EF1F9C000B2BA2A /* SearchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9605A200EF1F9C000B2BA2A /* SearchWindow.m */; };
@@ -32,6 +33,7 @@
 		AC975D43CBB3B455EF214E42 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADC0D2911BF846840046DDC7 /* SearchBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarController.h; sourceTree = "<group>"; };
 		ADC0D2921BF846840046DDC7 /* SearchBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarController.m; sourceTree = "<group>"; };
+		ADC0D2941BF86AEC0046DDC7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		ADF8DAD31BF7FDCB00B8757E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
 		C9605A1F0EF1F9C000B2BA2A /* SearchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindow.h; sourceTree = "<group>"; };
 		C9605A200EF1F9C000B2BA2A /* SearchWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindow.m; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADC0D2951BF86AEC0046DDC7 /* WebKit.framework in Frameworks */,
 				ADF8DAD41BF7FDCB00B8757E /* Carbon.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				B64B4EF9AF60F995707854DA /* libPods.a in Frameworks */,
@@ -129,6 +132,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADC0D2941BF86AEC0046DDC7 /* WebKit.framework */,
 				ADF8DAD31BF7FDCB00B8757E /* Carbon.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,

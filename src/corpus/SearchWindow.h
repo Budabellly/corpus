@@ -1,4 +1,5 @@
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 
 @class MainView;
 
@@ -6,6 +7,7 @@
 	NSView *childContentView;
     NSTextField *searchBar;
     CGSize startingSize;
+    WebView *web;
 }
 - (void)setShowingResults: (BOOL)showing;
 
