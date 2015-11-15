@@ -30,18 +30,6 @@
 	if (self) {
 		[self setOpaque:NO];
 		[self setBackgroundColor:[NSColor clearColor]];
-		
-		[[NSNotificationCenter defaultCenter]
-			addObserver:self
-			selector:@selector(mainWindowChanged:)
-			name:NSWindowDidBecomeMainNotification
-			object:self];
-		
-		[[NSNotificationCenter defaultCenter]
-			addObserver:self
-			selector:@selector(mainWindowChanged:)
-			name:NSWindowDidResignMainNotification
-			object:self];
 	}
 	return self;
 }
@@ -66,10 +54,6 @@
 	[super setContentSize:newFrameSize];
 }
 
-- (void)mainWindowChanged:(NSNotification *)aNotification {
-	[closeButton setNeedsDisplay];
-}
-
 - (void)setContentView:(NSView *)aView {
 	if ([childContentView isEqualTo:aView]) {
 		return;
@@ -83,12 +67,6 @@
 		frameView = [[[MainView alloc] initWithFrame:bounds] autorelease];
 		
 		[super setContentView:frameView];
-
-		closeButton = [NSWindow standardWindowButton:NSWindowCloseButton forStyleMask:NSTitledWindowMask];
-		NSRect closeButtonRect = [closeButton frame];
-		[closeButton setFrame:NSMakeRect(0, frameView.frame.size.height - closeButtonRect.size.height, closeButtonRect.size.width, closeButtonRect.size.height)];
-		[closeButton setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
-		[frameView addSubview:closeButton];
         
         searchBar = [[NSTextField alloc] initWithFrame:CGRectMake(10, 10, frameView.frame.size.width - 20, frameView.frame.size.height - 20)];
         searchBar.font = [NSFont fontWithName:@"Verdana" size:30.0];
