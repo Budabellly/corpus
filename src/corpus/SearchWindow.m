@@ -92,6 +92,7 @@
         searchBar = [[NSTextField alloc] initWithFrame:CGRectMake(10, 10, frameView.frame.size.width - 20, frameView.frame.size.height - 20)];
         searchBar.font = [NSFont fontWithName:@"Verdana" size:30.0];
         searchBar.delegate = [[SearchBarController alloc] init];
+        searchBar.placeholderString = @"Corpus Search";
         ((SearchBarController *)searchBar.delegate).window = self;
         [frameView addSubview:searchBar];
 	}
