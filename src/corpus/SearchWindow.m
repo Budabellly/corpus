@@ -13,9 +13,8 @@
         [NSApp activateIgnoringOtherApps:YES];
         [self makeKeyAndOrderFront:nil];
     }];
-    CGSize size = self.frame.size;
-    CGSize windowSize = [NSScreen mainScreen].frame.size;
-    [self setFrame:CGRectMake((windowSize.width - size.width) / 2, (windowSize.height - size.height) / 2, size.width, size.height) display:YES animate:NO];
+    startingSize = self.frame.size;
+    [self setShowingResults:NO];
 }
 
 - (id)initWithContentRect:(NSRect)contentRect
@@ -50,8 +49,22 @@
 	NSSize newFrameSize = [frameView bounds].size;
 	newFrameSize.width += sizeDelta.width;
 	newFrameSize.height += sizeDelta.height;
-	
+    
 	[super setContentSize:newFrameSize];
+}
+
+- (void)setShowingResults: (BOOL)showing {
+    CGSize windowSize = [NSScreen mainScreen].frame.size;
+    CGSize size;
+    if (!showing) {
+        size = startingSize;
+        [self setFrame:CGRectMake((windowSize.width - size.width) / 2, (windowSize.height - size.height) / 2, size.width, size.height) display:YES animate:NO];
+    } else {
+        size = CGSizeMake(startingSize.width, 300);
+        [self setFrame:CGRectMake((windowSize.width - size.width) / 2, (windowSize.height - size.height) / 2, size.width, size.height) display:YES animate:NO];
+    }
+    CGSize searchSize = searchBar.frame.size;
+    [searchBar setFrame:CGRectMake(10, size.height - searchSize.height - 10, size.width - 20, searchSize.height)];
 }
 
 - (void)setContentView:(NSView *)aView {
@@ -71,6 +84,7 @@
         searchBar = [[NSTextField alloc] initWithFrame:CGRectMake(10, 10, frameView.frame.size.width - 20, frameView.frame.size.height - 20)];
         searchBar.font = [NSFont fontWithName:@"Verdana" size:30.0];
         searchBar.delegate = [[SearchBarController alloc] init];
+        ((SearchBarController *)searchBar.delegate).window = self;
         [frameView addSubview:searchBar];
 	}
 	

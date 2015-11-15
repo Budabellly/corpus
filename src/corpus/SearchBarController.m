@@ -8,6 +8,7 @@
 
 #import "SearchBarController.h"
 #import <AFNetworking/AFNetworking.h>
+#import "SearchWindow.h"
 
 @interface SearchBarController ()
 
@@ -21,9 +22,9 @@
     [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [client postPath:@"" parameters:@{@"content": query} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *text = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"success: %@", text);
+        [self.window setShowingResults:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failure: %@", error);
+        [self.window setShowingResults:NO];
     }];
 }
 
@@ -31,6 +32,8 @@
     NSString *search = [((NSTextField *)notification.object) stringValue];
     if (search.length > 5) {
         [self search:search];
+    } else {
+        [self.window setShowingResults:NO];
     }
 }
 

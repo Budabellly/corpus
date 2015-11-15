@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SearchWindow;
 @interface SearchBarController : NSViewController <NSTextFieldDelegate>
-
+@property SearchWindow *window;
 @end
