@@ -23,7 +23,11 @@
     [client postPath:@"" parameters:@{@"content": query} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *text = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         [self.window setRows:text];
-        [self.window setShowingResults:YES];
+        if ([text isEqualToString:@"[]"]) {
+            [self.window setShowingResults:NO];
+        } else {
+            [self.window setShowingResults:YES];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.window setShowingResults:NO];
     }];
