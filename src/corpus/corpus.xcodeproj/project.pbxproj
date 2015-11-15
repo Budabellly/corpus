@@ -11,6 +11,7 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		ADC0D2931BF846840046DDC7 /* SearchBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADC0D2921BF846840046DDC7 /* SearchBarController.m */; };
 		ADF8DAD41BF7FDCB00B8757E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF8DAD31BF7FDCB00B8757E /* Carbon.framework */; };
 		B64B4EF9AF60F995707854DA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC975D43CBB3B455EF214E42 /* libPods.a */; };
 		C9605A210EF1F9C000B2BA2A /* SearchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9605A200EF1F9C000B2BA2A /* SearchWindow.m */; };
@@ -29,6 +30,8 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* corpus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = corpus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC975D43CBB3B455EF214E42 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADC0D2911BF846840046DDC7 /* SearchBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarController.h; sourceTree = "<group>"; };
+		ADC0D2921BF846840046DDC7 /* SearchBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarController.m; sourceTree = "<group>"; };
 		ADF8DAD31BF7FDCB00B8757E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
 		C9605A1F0EF1F9C000B2BA2A /* SearchWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindow.h; sourceTree = "<group>"; };
 		C9605A200EF1F9C000B2BA2A /* SearchWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindow.m; sourceTree = "<group>"; };
@@ -57,6 +60,8 @@
 			children = (
 				C9605A1F0EF1F9C000B2BA2A /* SearchWindow.h */,
 				C9605A200EF1F9C000B2BA2A /* SearchWindow.m */,
+				ADC0D2911BF846840046DDC7 /* SearchBarController.h */,
+				ADC0D2921BF846840046DDC7 /* SearchBarController.m */,
 				C9605A710EF201D800B2BA2A /* MainView.h */,
 				C9605A720EF201D800B2BA2A /* MainView.m */,
 			);
@@ -152,7 +157,6 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				1620951575374A2E57BF1B9E /* Embed Pods Frameworks */,
 				F0BABAF0A2A3B48C817CBE0C /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -201,21 +205,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1620951575374A2E57BF1B9E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AA7AF05464074765052B27D9 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +245,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				C9605A210EF1F9C000B2BA2A /* SearchWindow.m in Sources */,
 				C9605A730EF201D800B2BA2A /* MainView.m in Sources */,
+				ADC0D2931BF846840046DDC7 /* SearchBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,7 @@
 #import "SearchWindow.h"
 #import "MainView.h"
 #import <MASShortcut/Shortcut.h>
+#import "SearchBarController.h"
 
 @implementation SearchWindow
 
@@ -16,7 +17,6 @@
     CGSize windowSize = [NSScreen mainScreen].frame.size;
     [self setFrame:CGRectMake((windowSize.width - size.width) / 2, (windowSize.height - size.height) / 2, size.width, size.height) display:YES animate:NO];
 }
-
 
 - (id)initWithContentRect:(NSRect)contentRect
 	styleMask:(NSUInteger)windowStyle
@@ -43,7 +43,6 @@
 			name:NSWindowDidResignMainNotification
 			object:self];
 	}
-    [self setup];
 	return self;
 }
 
@@ -68,7 +67,7 @@
 }
 
 - (void)mainWindowChanged:(NSNotification *)aNotification {
-	// [closeButton setNeedsDisplay];
+	[closeButton setNeedsDisplay];
 }
 
 - (void)setContentView:(NSView *)aView {
@@ -87,9 +86,14 @@
 
 		closeButton = [NSWindow standardWindowButton:NSWindowCloseButton forStyleMask:NSTitledWindowMask];
 		NSRect closeButtonRect = [closeButton frame];
-		[closeButton setFrame:NSMakeRect(WINDOW_FRAME_PADDING - 20, bounds.size.height - (WINDOW_FRAME_PADDING - 20) - closeButtonRect.size.height, closeButtonRect.size.width, closeButtonRect.size.height)];
+		[closeButton setFrame:NSMakeRect(0, frameView.frame.size.height - closeButtonRect.size.height, closeButtonRect.size.width, closeButtonRect.size.height)];
 		[closeButton setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
 		[frameView addSubview:closeButton];
+        
+        searchBar = [[NSTextField alloc] initWithFrame:CGRectMake(10, 10, frameView.frame.size.width - 20, frameView.frame.size.height - 20)];
+        searchBar.font = [NSFont fontWithName:@"Verdana" size:30.0];
+        searchBar.delegate = [[SearchBarController alloc] init];
+        [frameView addSubview:searchBar];
 	}
 	
 	if (childContentView) {
@@ -99,6 +103,8 @@
 	[childContentView setFrame:[self contentRectForFrameRect:bounds]];
 	[childContentView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
 	[frameView addSubview:childContentView];
+    
+    [self setup];
 }
 
 - (NSView *)contentView {
