@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'corpus' target in the 'corpus' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
