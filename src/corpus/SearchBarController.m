@@ -16,8 +16,8 @@
 
 @implementation SearchBarController
 
-- (void)search: (NSString *)query {
-    NSURL *URL = [NSURL URLWithString:@"http://localhost:3005/plugin/groupme"];
+- (void)search: (NSString *)query forType: (NSString *)type {
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:3005/plugin/%@", type]];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:URL];
     [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [client postPath:@"" parameters:@{@"content": query} success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -30,9 +30,16 @@
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
-    NSString *search = [((NSTextField *)notification.object) stringValue];
-    if (search.length > 2) {
-        [self search:search];
+    NSString *entry = [((NSTextField *)notification.object) stringValue];
+    NSArray *parts = [entry componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (parts.count >= 3) {
+        NSString *type = parts[0];
+        NSString *query = [[parts subarrayWithRange:NSMakeRange(2, parts.count - 2)] componentsJoinedByString:@" "];
+        if (query.length > 2) {
+            [self search:query forType:type];
+        } else {
+            [self.window setShowingResults:NO];
+        }
     } else {
         [self.window setShowingResults:NO];
     }
